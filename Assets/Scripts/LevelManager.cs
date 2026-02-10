@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
         }
 
         ResumeButton.onClick.AddListener(TogglePause);
-        QuitButton.onClick.AddListener(() => GameObject.Find("MenuManager").GetComponent<MenuManager>().LoadLevel("MainMenu"));
+        QuitButton.onClick.AddListener(LoadMainMenu);
     }
 
     public void TogglePause()
@@ -50,6 +50,12 @@ public class LevelManager : MonoBehaviour
         PauseMenu.SetActive(isPaused);
         tpCon.enabled = !isPaused;
         Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1.0f;  
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void IncreaseCoinScore()
