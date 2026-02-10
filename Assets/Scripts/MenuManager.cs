@@ -4,6 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     [SerializeField] private Button myButton;
     [SerializeField] private Button closeButton;
     [SerializeField] private string levelName;
@@ -15,7 +30,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LoadLevel(string levelName)
+    public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
     }
