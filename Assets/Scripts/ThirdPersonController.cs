@@ -223,7 +223,7 @@ namespace StarterAssets
 
             if (targetSpeed == SprintSpeed)
             {
-                FindFirstObjectByType<LevelManager>().DecreaseStamina(0.2f);
+                FindFirstObjectByType<LevelManager>().DecreaseStamina(0.1f);
             
             } else if (!_input.sprint && TotalStamina < 100)
             {

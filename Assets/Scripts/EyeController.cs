@@ -14,10 +14,11 @@ public class EyeController : MonoBehaviour
     void Update()
     {
         Agent.SetDestination(objective.position);
+    }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, objective.position);
-
-        if (distanceToPlayer < 0.1f) 
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
         {
             SceneManager.LoadScene("GameOver");
         }

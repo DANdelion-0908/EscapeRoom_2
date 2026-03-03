@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -13,7 +14,7 @@ public class CreaturaController : MonoBehaviour
     [SerializeField] float waitTime = 3.0f;
     [SerializeField] Animator animator;
 
-    private readonly float viewRadius = 20.0f;
+    private readonly float viewRadius = 10.0f;
     private readonly float viewAngle = 90.0f;
     private readonly float attackRange = 2.0f;
     private readonly float attackCooldown = 1.0f;
@@ -75,7 +76,7 @@ public class CreaturaController : MonoBehaviour
     private void Chase()
     {
         animator.SetBool("isChasing", true);
-        Agent.speed = 3.5f;
+        Agent.speed = 5.0f;
         Agent.SetDestination(objective.position);
 
         if (Agent.remainingDistance < attackRange)
@@ -164,5 +165,13 @@ public class CreaturaController : MonoBehaviour
         Agent.SetDestination(waypoints[wpIndex].transform.position);
 
         Agent.isStopped = false;
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
