@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        myButton.onClick.AddListener(() => LoadLevel(levelName));
+        myButton.onClick.AddListener(() => LoadLevel("Level1"));
         closeButton.onClick.AddListener(CloseGame);
     }
 
@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
 
     void CloseGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
