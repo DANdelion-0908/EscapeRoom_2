@@ -424,7 +424,8 @@ MonoBehaviour:
   PauseMenu: {fileID: 2004848415}
   tpCon: {fileID: 2017994624}
   ResumeButton: {fileID: 2048610361}
-  QuitButton: {fileID: 1884330892}
+  SaveButton: {fileID: 1884330892}
+  persistence: {fileID: 791522533}
 --- !u!4 &84835491
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,11 +1485,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 3bd9602f-78e1-4263-9426-2a8d2a21e7b9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: id
+      value: Moneda1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964170251496683357, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 8490840f-225a-47ed-95e7-ac2de4e5b8aa
+      objectReference: {fileID: 0}
     - target: {fileID: 6444800970747838841, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1871,6 +1885,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a09623bd4e66f044eabd71d3aeca8099, type: 3}
+--- !u!1 &791522532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791522534}
+  - component: {fileID: 791522533}
+  m_Layer: 0
+  m_Name: Persistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &791522533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791522532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b284b29b8243a0d42b3950d41c47e06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistenceManager
+--- !u!4 &791522534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791522532}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808749744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,11 +2114,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 536f750d-76cf-4635-a22e-1ce4e5a3355b
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: id
+      value: Moneda2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964170251496683357, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 2ee2e409-709d-4aa9-b184-56956b848057
+      objectReference: {fileID: 0}
     - target: {fileID: 6444800970747838841, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
       propertyPath: m_Name
       value: Coin (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2433,11 +2504,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 2db78dce-69f0-4799-b1ba-72da1e837510
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: id
+      value: Moneda4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964170251496683357, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 0b54ffb9-d2f7-49e1-bbe7-ad94de876e14
+      objectReference: {fileID: 0}
     - target: {fileID: 6444800970747838841, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
       propertyPath: m_Name
       value: Coin (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3755,7 +3839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4528,7 +4612,7 @@ GameObject:
   - component: {fileID: 1884330893}
   - component: {fileID: 1884330892}
   m_Layer: 5
-  m_Name: Button
+  m_Name: saveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5080,11 +5164,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: id
+      value: ce209cbe-8144-4386-9d65-dbce92c8922f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964170251496683357, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
+      propertyPath: ID
+      value: 8f996d1f-8cb7-4686-9f3f-122678c10570
+      objectReference: {fileID: 0}
     - target: {fileID: 6444800970747838841, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
       propertyPath: m_Name
       value: Coin (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1145621908529253638, guid: a4b5efa4cc44d3647ba48b0804f90119, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5599,3 +5692,4 @@ SceneRoots:
   - {fileID: 1430285030}
   - {fileID: 1758301681}
   - {fileID: 1233684579}
+  - {fileID: 791522534}

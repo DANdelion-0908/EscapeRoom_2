@@ -36,7 +36,7 @@ public class SlimeController : MonoBehaviour
         }
 
         animator.SetFloat("Speed", Agent.velocity.magnitude);
-        Debug.Log(currentState.ToString());
+        //Debug.Log(currentState.ToString());
     }
 
     void OnTriggerEnter(Collider collision)

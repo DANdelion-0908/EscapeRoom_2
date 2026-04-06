@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEditor;
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,30 +18,39 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Is the game currently paused?")]
     public bool isPaused = false;
 
+    private List<string> currentCollectedIDs = new();
+
+    public int GetCoinScore() => coinScore;
+
     [SerializeField] private TextMeshProUGUI coinScoreText;
     [SerializeField] private TextMeshProUGUI staminaText;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private ThirdPersonController tpCon;
     [SerializeField] private Button ResumeButton;
-    [SerializeField] private Button QuitButton;
+    [SerializeField] private Button SaveButton;
+    [SerializeField] private PersistenceManager persistence;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         coinScoreText.text = "Coins: " + coinScore;
         staminaText.text = "Stamina: " + stamina;
+        ResumeButton.onClick.AddListener(TogglePause);
+        SaveButton.onClick.AddListener(OnSaveButton);
+
+            if (MenuManager.Instance != null && MenuManager.Instance.isLoading)
+            {
+                OnLoadButton();
+                MenuManager.Instance.isLoading = false;
+            }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if(Keyboard.current.pKey.wasPressedThisFrame)
         {
             TogglePause();
         }
-
-        ResumeButton.onClick.AddListener(TogglePause);
-        QuitButton.onClick.AddListener(LoadMainMenu);
     }
 
     public void TogglePause()
@@ -93,5 +103,66 @@ public class LevelManager : MonoBehaviour
             stamina += amount;
             staminaText.text = "Stamina: " + (int)stamina;
         }
+    }
+
+    public void RegisterCoin(string coinID)
+    {
+        if (!currentCollectedIDs.Contains(coinID))
+        {
+            currentCollectedIDs.Add(coinID);
+        }
+    }
+
+    public void OnSaveButton()
+    {
+        GameData data = new()
+        {
+            
+            coinsCount = GetCoinScore(),
+            playerStamina = stamina,
+            collectedIDs = new List<string>(currentCollectedIDs),
+            isPaused = isPaused,
+            pPositionX = tpCon.transform.position.x,
+            pPositionY = tpCon.transform.position.y,
+            pPositionZ = tpCon.transform.position.z
+        };
+
+        persistence.SaveGame(data);
+        Debug.Log("Progreso guardado desde el Menú de Pausa");
+    }
+
+        public void OnLoadButton()
+    {
+        GameData data = persistence.LoadGame();
+        if (data == null) return;
+
+        LoadDataToUI(data.coinsCount, data.playerStamina);
+        
+        currentCollectedIDs = new List<string>(data.collectedIDs);
+
+        UniqueID[] allCoins = FindObjectsByType<UniqueID>(FindObjectsSortMode.None);
+        foreach (var coin in allCoins)
+        {
+            if (currentCollectedIDs.Contains(coin.ID))
+            {
+                Destroy(coin.gameObject);
+            }
+        }
+        
+        if(isPaused) TogglePause();
+
+        tpCon.enabled = false; 
+        tpCon.transform.position = new Vector3(data.pPositionX, data.pPositionY, data.pPositionZ);
+        tpCon.enabled = true;
+
+        Debug.Log("Progreso cargado desde el Menú de Inicio");
+    }
+
+    public void LoadDataToUI(int score, float stam)
+    {
+        coinScore = score;
+        stamina = stam;
+        coinScoreText.text = "Coins: " + coinScore;
+        staminaText.text = "Stamina: " + (int)stamina;
     }
 }

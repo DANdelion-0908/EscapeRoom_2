@@ -54,7 +54,7 @@ public class CreaturaController : MonoBehaviour
         }
 
         animator.SetFloat("Speed", Agent.velocity.magnitude);
-        Debug.Log(currentState.ToString());
+        //Debug.Log(currentState.ToString());
     }
 
     private void Patrol()

@@ -1,19 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(UniqueID))]
 public class Collect_Coin : MonoBehaviour
 {
     AudioSource audioSource;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    UniqueID myID;
+
     void Start()
     {
         audioSource = GameObject.Find("CoinSFX").GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        myID = GetComponent<UniqueID>();
     }
 
     void OnTriggerEnter(Collider collision)
@@ -22,6 +19,10 @@ public class Collect_Coin : MonoBehaviour
         {
             FindFirstObjectByType<LevelManager>().IncreaseCoinScore();
             audioSource.Play();
+
+            FindFirstObjectByType<LevelManager>().RegisterCoin(myID.ID);
+            Debug.Log("Coin collected with ID: " + myID.ID);
+
             Destroy(gameObject);
         }
     }

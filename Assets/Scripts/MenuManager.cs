@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public bool isLoading = false;
+
     public static MenuManager Instance;
 
     private void Awake()
@@ -20,16 +22,20 @@ public class MenuManager : MonoBehaviour
     }
     
     [SerializeField] private Button myButton;
-    [SerializeField] private Button closeButton;
-    [SerializeField] private string levelName;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Button loadButton;
     void Start()
     {
-        myButton.onClick.AddListener(() => LoadLevel("Level1"));
-        closeButton.onClick.AddListener(CloseGame);
+        myButton.onClick.AddListener(() => {
+            isLoading = false;
+            LoadLevel("Level1");
+        });
+
+        loadButton.onClick.AddListener(() => {
+            isLoading = true;
+            LoadLevel("Level1");
+        });
     }
 
-    // Update is called once per frame
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
