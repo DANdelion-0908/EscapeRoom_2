@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private ThirdPersonController tpCon;
     [SerializeField] private Button ResumeButton;
     [SerializeField] private Button SaveButton;
+    [SerializeField] private Button LoadButton;
     [SerializeField] private PersistenceManager persistence;
 
     void Start()
@@ -36,12 +37,13 @@ public class LevelManager : MonoBehaviour
         staminaText.text = "Stamina: " + stamina;
         ResumeButton.onClick.AddListener(TogglePause);
         SaveButton.onClick.AddListener(OnSaveButton);
+        LoadButton.onClick.AddListener(OnLoadButton);
 
-            if (MenuManager.Instance != null && MenuManager.Instance.isLoading)
-            {
-                OnLoadButton();
-                MenuManager.Instance.isLoading = false;
-            }
+        if (MenuManager.Instance != null && MenuManager.Instance.isLoading)
+        {
+            OnLoadButton();
+            MenuManager.Instance.isLoading = false;
+        }
     }
 
     
